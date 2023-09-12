@@ -1,0 +1,11 @@
+{% if messages %}
+  {% for message in messages %}
+    <div id="message">
+      <div {% if message.tags %} class="alert alert-success alert-dismissible{{ message.tags }}"{% endif %} role="alert">
+        <i class="bi bi-check-circle me-1"></i>
+          {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}Success: {% endif %}
+          {{ message }}
+      </div>
+    </div>
+  {% endfor %}
+{% endif %}

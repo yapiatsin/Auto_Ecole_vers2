@@ -1,0 +1,102 @@
+{% extends 'ba_se.html' %}
+{% block title %}
+  authentication.......
+{% endblock  %}
+{% load static %}
+
+{% block entete %}
+  <h1>Créer Compte</h1>
+{% endblock %}
+
+{% block content %}
+{% include 'inclusion/alerts.html' %}
+  
+  <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-12 col-md-12 d-flex flex-column align-items-center justify-content-center">
+          <div class="d-flex justify-content-center py-4">
+            <a href="index.html" class="logo d-flex align-items-center w-auto">
+              <img src="assets/img/logo.png" alt="">
+              <span class="d-none d-lg-block">Auto-Ecole</span>
+            </a>
+          </div><!-- End Logo -->
+          <div class="card mb-3">
+            <div class="card-body">
+              <div class="pt-4 pb-2">
+                <h5 class="card-title pb-0 fs-4">
+                 Créer un Compte
+                  <span class="spinner-grow spinner-grow-sm" style="color: red" role="status" aria-hidden="true"></span>
+                </h5>
+              </div>
+              <form class="row g-3 needs-validation" novalidate method="POST">
+                {% csrf_token %}
+                <div class="col-6">
+                  <div class="input-group has-validation">
+                    <span class="input-group-text" id="inputGroupPrepend">@</span>
+                    {{form.username}}
+                    <div class="invalid-feedback">Please enter your username.</div>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="input-group has-validation">
+                    <span class="input-group-text" id="inputGroupPrepend"><i class="bi bi-person-fill" ></i></span>
+                    {{form.nom}}
+                    <div class="invalid-feedback">Please enter your name.</div>
+                  </div>
+                </div>
+
+                <div class="col-4">
+                  <div class="input-group has-validation">
+                    <span class="input-group-text" id="inputGroupPrepend"><i class="bi bi-person-badge-fill" ></i></span>
+                    {{form.prenom}}
+                    <div class="invalid-feedback">Please enter your last name.</div>
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div class="input-group has-validation">
+                    <span class="input-group-text" id="inputGroupPrepend"><i class="bi bi-google"></i></span>
+                    {{form.email}}
+                    <div class="invalid-feedback">Please enter your email.</div>
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div class="input-group has-validation">
+                    <span class="input-group-text" id="inputGroupPrepend"><i class="bi bi-calendar-check-fill"></i></span>
+                    {{form.date_naissance}}
+                    <div class="invalid-feedback">Please enter your born date.</div>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="input-group has-validation">
+                    <span class="input-group-text" id="inputGroupPrepend"><i class="bi bi-lock-fill"></i></span>
+                    {{form.password1}}
+                    <div class="invalid-feedback">Please enter your password.</div>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="input-group has-validation">
+                    <span class="input-group-text" id="inputGroupPrepend"><i class="bi bi-key-fill"></i></span>
+                    {{form.password2}}
+                    <div class="invalid-feedback">Please confirm your password.</div>
+                  </div>
+                </div>
+                <div class="text-center">
+                  <button type="submit" class="btn btn-outline-primary">Création</button>
+                </div>
+                <div class="col-12 text-center">
+                  <p class="small mb-0">Déjà un Compte! <a href="{% url 'login' %}">Se Connecter</a></p>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="credits">
+            Designed by <a href="https://bootstrapmade.com/">Solution-Tech</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
+
+

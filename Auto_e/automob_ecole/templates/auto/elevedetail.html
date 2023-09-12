@@ -1,0 +1,94 @@
+{% extends 'basefinal.html' %}
+{% load static %}
+{% block entete %}
+    <h1>Details</h1>
+{% endblock %}
+{% block content %}
+
+<section class="section profile">
+  <div class="row">
+    <div class="col-xl-4">
+      <div class="card">
+        <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+          {% if eleve.photo %}
+            <img style="width: 100%; height: 150px" src="{{ eleve.photo.url }}" alt="Profile" class=" card card-profil">
+          {% else %}
+            <img style="width: 200px; height: 150px" src="{% static 'img/admin.png' %}" alt="Profile" class=" card card-profil">
+          {% endif %}
+
+          
+          <h2>{{eleve.nom}} {{eleve.prenom}}</h2>
+          <a style='font-size: 12px;' class='link-success'>{{eleve.telephone}}</a>
+          <div class="social-links mt-2">
+            <a href="{% url 'eleve_edite' eleve.pk %}" class="trash"><i class="bi bi-pencil-square"></i></a>
+            <a href="{% url 'eleve_delete' eleve.pk %}" class="trash"><i class="bi bi-trash"></i></a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="col-xl-8">
+      <div class="card">
+        <div class="card-body pt-2">
+          <ul class="nav nav-tabs nav-tabs-bordered">
+            <li class="nav-item">
+              <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">Details</button>
+            </li>
+          </ul>
+          <div class="tab-content pt-2">
+            <div class="tab-pane fade show active profile-overview" id="profile-overview">
+              <div class="row">
+                <div class="col-lg-3 col-md-4 label">Date de naissance</div>
+                <div class="col-lg-9 col-md-8">{{eleve.date_naissance}}</div>
+              </div>
+              <div class="row">
+                <div class="col-lg-3 col-md-4 label">Nationalité</div>
+                <div class="col-lg-9 col-md-8">{{eleve.nationalite}}</div>
+              </div>
+              <div class="row">
+                <div class="col-lg-3 col-md-4 label">Ville</div>
+                <div class="col-lg-9 col-md-8">{{eleve.ville}}</div>
+              </div>
+              <div class="row">
+                <div class="col-lg-3 col-md-4 label">Commune</div>
+                <div class="col-lg-9 col-md-8">{{eleve.commune}}</div>
+              </div>
+              <div class="row">
+                <div class="col-lg-3 col-md-4 label">Quartier</div>
+                <div class="col-lg-9 col-md-8">{{eleve.quartier}}</div>
+              </div>
+              <div class="row">
+                <div class="col-lg-3 col-md-4 label">Permis</div>
+                <div class="col-lg-9 col-md-8">{{eleve.permis}}</div>
+              </div>
+              <div class="row">
+                <div class="col-lg-3 col-md-4 label">Date inscription</div>
+                <div class="col-lg-9 col-md-8">{{eleve.date_inscription}}</div>
+              </div>
+              <div class="row">
+                <div class="col-lg-3 col-md-4 label">Porte des lunettes</div>
+                <div class="col-lg-9 col-md-8">{{eleve.equip_visuel}}</div>
+              </div>
+              <div class="row">
+                <div class="col-lg-3 col-md-4 label">Porte appareil auditif</div>
+                <div class="col-lg-9 col-md-8">{{eleve.app_auditif}}</div>
+              </div>
+              <div class="row">
+                <div class="col-lg-3 col-md-4 label">Handicap</div>
+                <div class="col-lg-9 col-md-8">{{eleve.handicap}}</div>
+              </div>
+              <div class="row">
+                <div class="col-lg-3 col-md-4 label">Inscrit par</div>
+                <div class="col-lg-9 col-md-8">{{eleve.autheur_enreg}}</div>
+              </div>
+            </div>
+            </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+{% endblock%}
+  
